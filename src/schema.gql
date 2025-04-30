@@ -1,0 +1,97 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SubDepartment {
+  id: Float!
+  name: String!
+  department: Department!
+}
+
+type Department {
+  id: Float!
+  name: String!
+  subdepartments: [SubDepartment!]!
+}
+
+type User {
+  """id for the user"""
+  id: Int!
+
+  """username for the user"""
+  username: String!
+
+  """password for the user"""
+  password: String!
+}
+
+type AuthPayload {
+  """id of user"""
+  id: Int!
+
+  """jwt access token for user"""
+  accessToken: String!
+}
+
+type Subdepartment {
+  id: Int!
+  name: String!
+  departmentId: Int!
+}
+
+type Query {
+  departments: [Department!]!
+  department(id: Int!): Department!
+  subdepartments: [Subdepartment!]!
+  subdepartment(id: Int!): Subdepartment!
+}
+
+type Mutation {
+  createDepartment(createDepartmentInput: CreateDepartmentInput!): Department!
+  updateDepartment(updateDepartmentInput: UpdateDepartmentInput!): Department!
+  removeDepartment(id: Int!): Department!
+  createUser(createUserInput: CreateUserInput!): User!
+  loginUser(loginInput: CreateUserInput!): AuthPayload!
+  createSubdepartment(createSubdepartmentInput: CreateSubdepartmentInput!): Subdepartment!
+  updateSubdepartment(updateSubdepartmentInput: UpdateSubdepartmentInput!): Subdepartment!
+  removeSubdepartment(id: Int!): Subdepartment!
+}
+
+input CreateDepartmentInput {
+  """Name for department"""
+  name: String!
+
+  """List of subdepartments"""
+  subdepartments: [CreateSubDepartmentInput!]!
+}
+
+input CreateSubDepartmentInput {
+  """Name for department"""
+  name: String!
+}
+
+input UpdateDepartmentInput {
+  id: Int!
+
+  """Name for department"""
+  name: String!
+}
+
+input CreateUserInput {
+  """username for user"""
+  username: String!
+
+  """password for user"""
+  password: String!
+}
+
+input CreateSubdepartmentInput {
+  name: String!
+  departmentId: Int!
+}
+
+input UpdateSubdepartmentInput {
+  id: Int!
+  name: String!
+  departmentId: Int!
+}

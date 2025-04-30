@@ -1,0 +1,75 @@
+# Write your query or mutation here
+
+# mutation {
+#   createUser(createUserInput: {username: "code", password: "1234"}) {
+#     id
+#     username
+#     password
+#   }
+#   }
+
+# mutation {
+#   loginUser(loginInput: { username: "code", password: "1234"}) {
+#     id
+#     accessToken
+#   }
+# }
+
+# mutation {
+#   createDepartment(createDepartmentInput: {name: "agric", subdepartments: [{name: "sub1"}, {name: "sub2"}]}) {
+#     id
+#     name 
+#   } 
+# }
+
+# mutation {
+#   createDepartment(createDepartmentInput: {name: "test", subdepartments: [{name: "test1"}, {name: "test2"}]}) {
+#     id
+#     name 
+#     subdepartments {
+#         id
+#       	name
+#       }
+#   }
+# }
+
+
+# mutation {
+#   removeDepartment(id: 8) {
+#     id
+#     name
+#   }
+# }
+
+
+# query {
+#   departments {
+#     id
+#     name
+#     subdepartments {
+#       id
+#       name
+#     }
+#   }
+# }
+
+# query {
+#   department(id: 10) {
+#     id
+#     name
+#   }
+# }
+
+# mutation {
+#   createSubdepartment(createSubdepartmentInput: { name: "another", departmentId: 10}) {
+#     id
+#     name
+#   }
+# }
+
+# mutation {
+#   updateSubdepartment(updateSubdepartmentInput: {name: "another updated", id: 8, departmentId: 10}) {
+#     id
+#     name
+#   }
+# }
