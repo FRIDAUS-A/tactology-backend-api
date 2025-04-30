@@ -1,5 +1,5 @@
 import { InputType, Field, Int } from '@nestjs/graphql';
-import { MinLength } from 'class-validator';
+import { IsString, MinLength } from 'class-validator';
 
 @InputType()
 export class UpdateDepartmentInput {
@@ -7,6 +7,7 @@ export class UpdateDepartmentInput {
   id: number
   
   @Field({ description: 'Name for department' })
+  @IsString()
   @MinLength(2)
   name: string;
 }

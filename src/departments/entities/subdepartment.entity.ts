@@ -1,16 +1,17 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm";
 import { Department } from "./department.entity";
 import { Field, ObjectType } from "@nestjs/graphql";
+import { IsString } from "class-validator";
 
 @Entity()
-@ObjectType()  // Mark SubDepartment as a GraphQL object type
+@ObjectType()
 export class SubDepartment {
   @PrimaryGeneratedColumn()
-  @Field()  // Expose id to GraphQL
+  @Field()
   id: number;
 
   @Column()
-  @Field()  // Expose name to GraphQL
+  @Field()
   name: string;
 
   @ManyToOne(() => Department, department => department.subdepartments, { onDelete: 'CASCADE'})

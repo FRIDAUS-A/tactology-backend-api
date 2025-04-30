@@ -14,6 +14,9 @@ export class DepartmentsResolver {
   @Mutation(() => Department)
   @UseGuards(GqlJwtGuardGuard)
   createDepartment(@Args('createDepartmentInput') createDepartmentInput: CreateDepartmentInput) {
+    if (!createDepartmentInput.subdepartments) {
+      createDepartmentInput.subdepartments = [];
+    }
     return this.departmentsService.create(createDepartmentInput);
   }
 

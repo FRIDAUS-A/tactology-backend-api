@@ -2,8 +2,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { SubDepartment } from './subdepartment.entity';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { MinLength } from 'class-validator';
-
 
 @Entity()
 @ObjectType()  
@@ -14,7 +12,6 @@ export class Department {
 
   @Column()
   @Field()  
-  @MinLength(2)
   name: string;
 
   @OneToMany(() => SubDepartment, subdepartment => subdepartment.department, { cascade: true, eager: true})
